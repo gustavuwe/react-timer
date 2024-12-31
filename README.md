@@ -1,50 +1,103 @@
-# React + TypeScript + Vite
+# Task Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação simples e intuitiva para gerenciar tarefas e acompanhar o tempo gasto em cada uma delas. Além disso, oferece uma tela de histórico para monitorar todas as tarefas criadas, incluindo informações sobre data, status e nome da tarefa.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Adicione tarefas**: Insira o nome da tarefa e o tempo estimado para completá-la.
+- **Cronômetro integrado**: Inicie o cronômetro para acompanhar o tempo gasto em tempo real.
+- **Histórico de tarefas**: Veja todas as tarefas adicionadas, incluindo:
+  - Nome da tarefa.
+  - Data de criação.
+  - Status de conclusão (concluído ou não).
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **ReactJS**: Biblioteca principal para construção da interface.
+- **Styled Components**: Para estilizações dinâmicas e componentizadas.
 
-- Configure the top-level `parserOptions` property like this:
+## 🔧 Como Usar
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Siga estas etapas para executar a aplicação localmente:
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/gustavuwe/react-timer.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Acesse a pasta do projeto
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd task-timer
 ```
+
+### 3. Instale as dependências
+
+Certifique-se de que você tem o [Node.js](https://nodejs.org) instalado.
+
+```bash
+npm install
+```
+
+### 4. Inicie o servidor de desenvolvimento
+
+```bash
+npm start
+```
+
+A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
+
+## 🎨 Layout
+
+- **Tela Inicial**: Interface para adicionar tarefas e iniciar o cronômetro.
+- **Tela de Histórico**: Lista todas as tarefas criadas, com seus respectivos detalhes.
+
+## 🌐 Deploy
+
+Caso deseje disponibilizar a aplicação, você pode utilizar ferramentas como:
+
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+
+## ⚙ Configuração Adicional
+
+Certifique-se de atualizar as dependências regularmente com:
+
+```bash
+npm update
+```
+
+## 📊 Roadmap Futuro
+
+- Adicionar suporte a notificações para tarefas conclídas.
+- Implementar sincronização com armazenamento na nuvem.
+- Criar temas personalizados.
+
+## ✨ Contribuições
+
+Contribuições são sempre bem-vindas! Siga estas etapas:
+
+1. Fork o repositório.
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Commit suas alterações:
+   ```bash
+   git commit -m "Adicionei uma nova feature"
+   ```
+4. Dê push para sua branch:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um Pull Request.
+
+## 🔧 Suporte
+
+Caso tenha dúvidas ou problemas, fique à vontade para abrir uma [issue](https://github.com/gustavuwe/react-timer/issues).
+
+---
+
+© 2024 Task Timer. Todos os direitos reservados.
+
