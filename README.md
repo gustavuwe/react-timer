@@ -29,7 +29,7 @@ git clone https://github.com/gustavuwe/react-timer.git
 ### 2. Acesse a pasta do projeto
 
 ```bash
-cd task-timer
+cd react-timer
 ```
 
 ### 3. Instale as dependências
