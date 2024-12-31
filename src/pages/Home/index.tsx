@@ -1,7 +1,7 @@
 import { Play } from "phosphor-react";
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as zod from 'zod'
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
 
 import {
   CountdownContainer,
@@ -15,22 +15,32 @@ import {
 import { useState } from "react";
 
 const newCycleFormValidationSchema = zod.object({
-  task: zod.string().min(1, 'Informe a tarefa'), // if the users doesnt pass a value, then says that
-  minutesAmount: zod.number().min(5, "O ciclo precisa ser de no mínimo 5 minutos.").max(60, "O ciclo precisa ser de no máximo 60 minutos."),
-})
+  task: zod.string().min(1, "Informe a tarefa"), // if the users doesnt pass a value, then says that
+  minutesAmount: zod
+    .number()
+    .min(5, "O ciclo precisa ser de no mínimo 5 minutos.")
+    .max(60, "O ciclo precisa ser de no máximo 60 minutos."),
+});
+
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>;
 
 export function Home() {
-  const { register, handleSubmit, watch } = useForm({
-    resolver: zodResolver(newCycleFormValidationSchema)
-  })
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: "",
+      minutesAmount: 0,
+    },
+  });
 
-  function handleCreateNewCycle(data: any) {
-
+  function handleCreateNewCycle(data: NewCycleFormData) {
+    console.log(data);
+    reset(); // reset the fields to default values after submit.
   }
 
-  const task = watch('task') // -> controlled component
-  const isSubmitDisabled = !task
- 
+  const task = watch("task"); // -> controlled component
+  const isSubmitDisabled = !task;
+
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
