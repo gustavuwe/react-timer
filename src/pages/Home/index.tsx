@@ -48,12 +48,20 @@ export function Home() {
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
   useEffect(() => {
+    let interval: number;
+
     if (activeCycle) {
-      setInterval(() => {
-        setAmountSecondsPassed(differenceInSeconds(new Date(), activeCycle.startDate)); // calculates diference in seconds between now and the start date, because timeout can be not accurate
-      }, 1000)
+      interval = setInterval(() => {
+        setAmountSecondsPassed(
+          differenceInSeconds(new Date(), activeCycle.startDate)
+        ); // calculates diference in seconds between now and the start date, because timeout can be not accurate
+      }, 1000);
     }
-  }, [activeCycle])
+
+    return () => {
+      clearInterval(interval); // removes the previous interval, to prevent conflicts or bugs
+    };
+  }, [activeCycle]);
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime());
@@ -67,6 +75,7 @@ export function Home() {
 
     setCycles((state) => [...state, newCycle]);
     setActiveCycleId(id);
+    setAmountSecondsPassed(0); // if has a previouse cycle, then reset secs passed
 
     reset(); // reset the fields to default values after submit.
   }
@@ -79,6 +88,12 @@ export function Home() {
 
   const minutes = String(minutesAmount).padStart(2, "0"); // padStart to ensure that the minutes are always 2 digits, e.g 9 -> 09
   const seconds = String(secondsAmount).padStart(2, "0");
+
+  useEffect(() => {
+    if (activeCycle) {
+      document.title = `${minutes}:${seconds}`
+    }
+  }, [minutes, seconds, activeCycle]);
 
   const task = watch("task"); // -> controlled component
   const isSubmitDisabled = !task;
