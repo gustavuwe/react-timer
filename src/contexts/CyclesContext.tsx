@@ -70,8 +70,6 @@ export function CyclesContextProvider({ children }: CyclesContextProviderProps) 
     setCycles((state) => [...state, newCycle]);
     setActiveCycleId(id);
     setAmountSecondsPassed(0); // if has a previouse cycle, then reset secs passed
-
-    // reset(); // reset the fields to default values after submit.
   }
 
   function interruptCurrentCycle() {
