@@ -21,7 +21,7 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          activeCycle.startDate
+          new Date(activeCycle.startDate)
         ); // calculates diference in seconds between now and the start date, because timeout can be not accurate
 
         if (secondsDifference >= totalSeconds) {
